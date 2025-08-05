@@ -2,29 +2,65 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Radar M1LLON™</title>
+  <title>M1LLON™ – Plataforma Operativa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
+      background-color: #0d0d0d;
+      color: #ffffff;
       font-family: Arial, sans-serif;
-      background-color: #0a0a0a;
-      color: #00ff99;
-      padding: 20px;
+      padding: 2rem;
     }
-    h1 {
-      color: #00e6e6;
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
     }
-    .radar {
-      border: 2px solid #00ff99;
-      padding: 20px;
+    #logo {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+    .container {
+      background-color: #1a1a1a;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+    #enviarBtn {
+      background-color: #00ff88;
+      color: black;
+    }
+    #voiceBtn {
+      background-color: #ffaa00;
+    }
+    #respuesta {
+      background-color: #333;
+      margin-top: 1rem;
+      padding: 1rem;
       border-radius: 10px;
-      margin-bottom: 30px;
+      min-height: 100px;
     }
     .activo {
-      margin-bottom: 15px;
       background-color: #111;
       padding: 15px;
+      margin-bottom: 15px;
       border-left: 5px solid #00ff99;
+      border-radius: 10px;
     }
     .label {
       font-weight: bold;
@@ -33,26 +69,79 @@
   </style>
 </head>
 <body>
+  <header>
+    <img id="logo" src="https://i.imgur.com/FF5rOEI.png" alt="Logo M1LLON">
+    <h1>M1LLON™ – Hasta durmiendo ganamos dinero</h1>
+  </header>
 
-  <h1>🚨 RADAR M1LLON™ - Cañonazos Activos</h1>
+  <div class="container">
+    <h2>📡 RADAR M1LLON™ – Cañonazos Activos</h2>
 
-  <div class="radar">
     <div class="activo">
-      <div class="label">Activo:</div> TSLA
-      <div class="label">Dirección:</div> Corto
-      <div class="label">Entrada:</div> 303,90 $
-      <div class="label">SL:</div> 308,50 $
-      <div class="label">TP:</div> 297,00 $
+      <div class="label">Activo:</div> TSLA<br>
+      <div class="label">Dirección:</div> Corto<br>
+      <div class="label">Entrada:</div> 303,90 $<br>
+      <div class="label">SL:</div> 308,50 $<br>
+      <div class="label">TP:</div> 297,00 $
     </div>
 
     <div class="activo">
-      <div class="label">Activo:</div> KVYO
-      <div class="label">Dirección:</div> Largo
-      <div class="label">Entrada:</div> 21,45 $
-      <div class="label">SL:</div> 20,85 $
-      <div class="label">TP:</div> 24,20 $
+      <div class="label">Activo:</div> KVYO<br>
+      <div class="label">Dirección:</div> Largo<br>
+      <div class="label">Entrada:</div> 21,45 $<br>
+      <div class="label">SL:</div> 20,85 $<br>
+      <div class="label">TP:</div> 24,20 $
     </div>
   </div>
 
+  <div class="container">
+    <h2>🤖 Asistente IA M1LLON™ (ChatGPT)</h2>
+    <textarea id="comando" placeholder="Ejemplo: ¿Qué pasa con Tesla hoy?"></textarea>
+    <button id="enviarBtn">Enviar</button>
+    <button id="voiceBtn">🎤 Hablar</button>
+    <div id="respuesta">Esperando tu comando...</div>
+  </div>
+
+  <script>
+    const enviarBtn = document.getElementById("enviarBtn");
+    const voiceBtn = document.getElementById("voiceBtn");
+    const comando = document.getElementById("comando");
+    const respuesta = document.getElementById("respuesta");
+
+    enviarBtn.addEventListener("click", async () => {
+      const mensaje = comando.value.trim();
+      if (!mensaje) return;
+      respuesta.innerHTML = "⏳ Consultando a M1LLON...";
+
+      try {
+        const res = await fetch("https://m1llon-backend.replit.app/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mensaje })
+        });
+
+        const data = await res.json();
+        respuesta.innerHTML = data.respuesta || "❌ Error al recibir respuesta.";
+      } catch (error) {
+        respuesta.innerHTML = "🚨 Error al conectar con el servidor M1LLON.";
+      }
+    });
+
+    voiceBtn.addEventListener("click", () => {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = "es-ES";
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const texto = event.results[0][0].transcript;
+        comando.value = texto;
+        respuesta.innerHTML = `🎙️ Comando por voz: <b>${texto}</b>`;
+      };
+
+      recognition.onerror = function(event) {
+        respuesta.innerHTML = `❌ Error con el micrófono: ${event.error}`;
+      };
+    });
+  </script>
 </body>
 </html>
