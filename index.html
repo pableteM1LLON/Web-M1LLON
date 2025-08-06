@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>M1LLON™ - Sala de Trading</title>
   <link rel="icon" href="https://i.imgur.com/V2zsR1j.png" type="image/png">
   <style>
@@ -36,15 +36,27 @@
       padding: 1rem;
       background: #111;
     }
-    audio {
-      display: block;
-      margin: 1rem auto;
-    }
     .footer {
       text-align: center;
       padding: 1rem;
       color: #777;
       font-size: 0.8rem;
+    }
+    audio {
+      display: block;
+      margin: 1rem auto;
+    }
+    .boton-chat {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .boton-chat a {
+      padding: 1rem 2rem;
+      background-color: #00cc88;
+      color: black;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -57,7 +69,6 @@
   </header>
 
   <main class="grids">
-    <!-- GRÁFICO DE TRADINGVIEW CON BUSCADOR -->
     <div class="tradingview-widget-container" style="height: 600px;">
       <div id="tradingview_widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -83,22 +94,23 @@
   </main>
 
   <section class="chat-container">
-    <h2>Asistente M1LLON™</h2>
-    <iframe
-      src="https://chat.openai.com/chat"
-      width="100%"
-      height="500"
-      style="border: 1px solid #333; border-radius: 8px;"
-      allow="microphone;"
-    ></iframe>
+    <h2 style="text-align: center;">Asistente M1LLON™</h2>
+    <p style="text-align: center; font-size: 1.2rem; color: #ccc;">
+      ¿Necesitas ayuda en tiempo real? Pulsa el botón:
+    </p>
+    <div class="boton-chat">
+      <a href="https://chat.openai.com/chat" target="_blank">Hablar con tu Asistente M1LLON™</a>
+    </div>
   </section>
 
   <section class="music">
-    <h2 style="text-align: center;">Ambiente de Trading</h2>
+    <h2 style="text-align: center;">Ambiente de Trading - Música Activada 🎵</h2>
     <audio controls autoplay loop>
-      <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
       Tu navegador no soporta el audio HTML5.
     </audio>
+    <!-- Cuando tengas el enlace de Mrs. Robinson, reemplaza la línea de arriba por:
+    <source src="AQUÍ_TU_ENLACE_MP3" type="audio/mpeg"> -->
   </section>
 
   <footer class="footer">
