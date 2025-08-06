@@ -1,121 +1,96 @@
-
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>M1LLON™ - Sala de Trading</title>
-  <link rel="icon" href="https://i.imgur.com/V2zsR1j.png" type="image/png">
+  <title>M1LLON - Plataforma de Trading Definitiva</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: white;
-      overflow-x: hidden;
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', sans-serif;
     }
     header {
-      background: #111;
+      background-color: #111;
       padding: 1rem;
       text-align: center;
-      border-bottom: 1px solid #333;
+      border-bottom: 2px solid #00ffcc;
     }
     header h1 {
-      margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 0;
     }
-    .slogan {
-      font-size: 1rem;
-      color: #ccc;
-    }
-    .grids {
-      padding: 1rem;
-    }
-    .chat-container {
-      border-top: 1px solid #333;
-      padding: 1rem;
-      background: #111;
-    }
-    .footer {
-      text-align: center;
-      padding: 1rem;
-      color: #777;
-      font-size: 0.8rem;
-    }
-    audio {
-      display: block;
+    .tradingview-widget-container {
       margin: 1rem auto;
+      width: 100%;
+      max-width: 1200px;
+      height: 600px;
     }
-    .boton-chat {
+    .tab-pane {
+      padding-top: 1rem;
+    }
+    footer {
+      background-color: #111;
+      color: #888;
       text-align: center;
-      margin-top: 1rem;
+      padding: 1rem;
+      font-size: 0.9rem;
     }
-    .boton-chat a {
-      padding: 1rem 2rem;
-      background-color: #00cc88;
-      color: black;
-      border-radius: 10px;
-      font-weight: bold;
-      text-decoration: none;
+    #assistant-container iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="https://i.imgur.com/V2zsR1j.png" alt="Logo M1LLON" width="80">
     <h1>M1LLON™</h1>
-    <p class="slogan">Hasta durmiendo ganamos dinero</p>
-  </header>
+    <p>Hasta durmiendo ganamos dinero 💸</p>
+  </header>  <div class="container">
+    <ul class="nav nav-tabs" id="sectorTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tech-tab" data-bs-toggle="tab" data-bs-target="#tech" type="button" role="tab">Tecnología</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="salud-tab" data-bs-toggle="tab" data-bs-target="#salud" type="button" role="tab">Salud</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="finanzas-tab" data-bs-toggle="tab" data-bs-target="#finanzas" type="button" role="tab">Finanzas</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="sectorTabsContent">
+      <div class="tab-pane fade show active" id="tech" role="tabpanel">
+        <div class="tradingview-widget-container">
+          <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_e3e2b&symbol=NASDAQ:AAPL&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6&studies=[]&theme=dark&style=1&timezone=Europe/Madrid&studies_overrides={}" width="100%" height="600" allowtransparency="true" scrolling="no" allowfullscreen=""></iframe>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="salud" role="tabpanel">
+        <div class="tradingview-widget-container">
+          <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_b2b2&symbol=NYSE:PFE&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Europe/Madrid" width="100%" height="600" allowtransparency="true" scrolling="no" allowfullscreen=""></iframe>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="finanzas" role="tabpanel">
+        <div class="tradingview-widget-container">
+          <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_c3c3&symbol=NYSE:JPM&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Europe/Madrid" width="100%" height="600" allowtransparency="true" scrolling="no" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </div><hr />
 
-  <main class="grids">
-    <div class="tradingview-widget-container" style="height: 600px;">
-      <div id="tradingview_widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-      <script type="text/javascript">
-        new TradingView.widget({
-          "autosize": true,
-          "symbol": "NASDAQ:TSLA",
-          "interval": "15",
-          "timezone": "Europe/Madrid",
-          "theme": "dark",
-          "style": "1",
-          "locale": "es",
-          "toolbar_bg": "#0b0b0b",
-          "enable_publishing": false,
-          "allow_symbol_change": true,
-          "hide_legend": false,
-          "save_image": false,
-          "studies": [],
-          "container_id": "tradingview_widget"
-        });
-      </script>
-    </div>
-  </main>
+<div id="assistant-container">
+  <iframe src="https://chat.openai.com" title="Asistente M1LLON"></iframe>
+</div>
 
-  <section class="chat-container">
-    <h2 style="text-align: center;">Asistente M1LLON™</h2>
-    <p style="text-align: center; font-size: 1.2rem; color: #ccc;">
-      ¿Necesitas ayuda en tiempo real? Pulsa el botón:
-    </p>
-    <div class="boton-chat">
-      <a href="https://chat.openai.com/chat" target="_blank">Hablar con tu Asistente M1LLON™</a>
-    </div>
-  </section>
+  </div><audio id="alertSound" src="https://notificationsounds.com/storage/sounds/file-sounds-1156-classic-notification.mp3" preload="auto"></audio>
 
-  <section class="music">
-    <h2 style="text-align: center;">Ambiente de Trading - Música Activada 🎵</h2>
-    <audio controls autoplay loop>
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-      Tu navegador no soporta el audio HTML5.
-    </audio>
-    <!-- Cuando tengas el enlace de Mrs. Robinson, reemplaza la línea de arriba por:
-    <source src="AQUÍ_TU_ENLACE_MP3" type="audio/mpeg"> -->
-  </section>
-
-  <footer class="footer">
-    &copy; 2025 Proyecto M1LLON™. Todos los derechos reservados.
-  </footer>
-
-</body>
+  <script>
+    function playAlert() {
+      const sound = document.getElementById('alertSound');
+      sound.play();
+    }
+    // Simulación de cañonazo (desactiva en producción)
+    setTimeout(playAlert, 5000);
+  </script>  <footer>
+    <p>&copy; 2025 M1LLON™ - Todos los derechos reservados. Proyecto con alma, visión y aullido.</p>
+  </footer>  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script></body>
 </html>
