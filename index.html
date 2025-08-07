@@ -27,9 +27,32 @@
       font-size: 1.5rem;
       margin-top: 1rem;
     }
+    .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo-animated {
+  width: 120px;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
   </style>
 </head>
-<body>
+<body> 
+  <div class="logo-container">
+  <img src="https://i.imgur.com/ONzUawH.gif" alt="Logo M1LLON" class="logo-animated" />
+</div>
   <header>
     <h1>🚀 Proyecto M1LLON™</h1>
     <p id="clock">Cargando hora…</p>
